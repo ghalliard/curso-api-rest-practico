@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# api-key.js (mi api key es top secret)
+src/api-key.js
