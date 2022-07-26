@@ -105,3 +105,6 @@ dist
 
 # api-key.js (mi api key es top secret)
 src/api-key.js
+
+# assets (imagenes e iconos yts)
+assets

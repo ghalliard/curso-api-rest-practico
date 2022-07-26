@@ -1,6 +1,5 @@
 
 
-
 *{
     padding: 0;
     margin: 0;
@@ -10,3 +9,23 @@ html{
     font-size: 62.5%;
 }
 
+.main-header{
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-icon-menu div, .navbar-icon-profile div{
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+}
+.navbar-icon-menu div .image-container, .navbar-icon-profile div .image-container{
+    display: grid;
+    place-content: center;
+}
+.navbar-icon-logo div{
+    display: grid;
+    place-content: center;
+    height: 100%;
+    font-size: 1.6rem;
+    color: black;
+}
