@@ -5,13 +5,19 @@
     margin: 0;
     box-sizing: border-box;
 }
+a{
+    text-decoration: none;
+}
 html{
     font-size: 62.5%;
 }
 
 .main-header{
     display: flex;
+    width: 100%;
     justify-content: space-between;
+    position: absolute;
+    background-color: hsla(0, 0%, 0%, 0.2);
 }
 .navbar-icon-menu div, .navbar-icon-profile div{
     display: inline-block;
@@ -27,5 +33,35 @@ html{
     place-content: center;
     height: 100%;
     font-size: 1.6rem;
-    color: black;
+    color: white;
+}
+
+.best-premier-movies{
+    display: flex;
+    align-items: flex-end;
+    height: 500px;
+    background-image: url('../assets/images/I\'m\ Vengeance-\ Best\ Quotes\ From\ The\ Batman\ \(2022\).png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.movie-description{
+    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    background: hsla(0, 0%, 0%, 0.9);
+    box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
+    -webkit-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
+    -moz-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
+}
+.movie-description h1{
+    margin-bottom: 12px;
+    font-size: 2.4rem;
+}
+.main-button{
+    padding: 8px;
+    background-color: brown;
+    border-radius: 8px;
+    border: none;
+    color: white;
 }
