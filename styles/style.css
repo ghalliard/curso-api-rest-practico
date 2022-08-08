@@ -10,6 +10,7 @@ a{
 }
 html{
     font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .main-header{
@@ -45,7 +46,7 @@ html{
     background-repeat: no-repeat;
     overflow: hidden;
 }
-.movie-description{
+.best-premier-movies .movie-description{
     width: 100%;
     padding: 10px 20px;
     color: white;
@@ -64,4 +65,21 @@ html{
     border-radius: 8px;
     border: none;
     color: white;
+}
+.trending-movies-preview-section{
+    padding: 20px 0;
+}
+.trending-preview--movie-list{
+    display: flex;
+    overflow-x: auto;
+}
+.movie-container{
+    margin-left: 20px;
+}
+.movie-img{
+    width: 150px;
+    border-radius: 8px;
+}
+.movie-container .movie-description{
+    padding: 12px;
 }
