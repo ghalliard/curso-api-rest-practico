@@ -1,4 +1,7 @@
-
+:root{
+    --main-color: brown;
+    --light-color: azure;
+}
 
 *{
     padding: 0;
@@ -11,6 +14,9 @@ a{
 html{
     font-size: 62.5%;
     font-family: Arial, Helvetica, sans-serif;
+}
+li{
+    list-style: none;
 }
 
 .main-header{
@@ -35,7 +41,7 @@ html{
     place-content: center;
     height: 100%;
     font-size: 1.6rem;
-    color: white;
+    color: var(--light-color);
 }
 
 .movie-list{
@@ -53,33 +59,95 @@ html{
     padding: 20px;
     position: absolute;
     bottom: 0;
-    color: white;
-    background: hsla(0, 0%, 0%, 0.9);
-    box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
-    -webkit-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
-    -moz-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
+    color: var(--light-color);
+    background: hsla(0, 0%, 0%, 0.95);
+    box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.95);
+    -webkit-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.95);
+    -moz-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.95);
 }
-/*
-.movie .movie-description{
-    width: 100%;
-    padding: 10px 20px;
-    color: white;
-    background: hsla(0, 0%, 0%, 0.9);
-    box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
-    -webkit-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
-    -moz-box-shadow: -1px 0px 14px 15px rgba(0,0,0,0.9);
-}*/
 .movie-description h1{
     margin-bottom: 12px;
     font-size: 2.4rem;
 }
 .main-button{
     padding: 8px;
-    background-color: brown;
+    background-color: var(--main-color);
     border-radius: 8px;
     border: none;
-    color: white;
+    color: var(--light-color);
 }
-.trending-movies-preview-section{
-    height: 50px;
+
+.movies-section{
+    padding: 16px 20px;
+}
+.movies-section h2{
+    margin-bottom: 12px;
+    color: var(--main-color);
+    font-size: 2rem;
+    font-weight: bold;
+}
+.movies-section article div img{
+    width: 100%;
+}
+.movies-section .row1{
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 8px;
+}
+.movies-section .row2{
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+}
+.movies-section .button-container{
+    text-align: center;
+    margin-top: 12px;
+}
+
+.main-footer{
+    font-size: 1.2rem;
+}
+.primary-footer{
+    padding: 20px 10px;
+    background-color: var(--main-color);
+    color: var(--light-color);
+}
+.primary-footer--first-container div{
+    display: inline-block;
+}
+.primary-footer a{
+    color: var(--light-color);
+}
+.primary-footer--first-container{
+    display: flex;
+    justify-content: space-around;
+
+}
+.primary-footer--first-container .politic-container{
+    min-width: 134px;
+}
+.primary-footer--first-container .social-media{
+    width: 30%;
+}
+.primary-footer .info-container .first-parra{
+    margin-bottom: 8px;
+}
+.politic-container ul li{
+    margin-bottom: 32px;
+}
+.primary-footer .info-container{
+    grid-column: 1/3;
+}
+.second-footer ul{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 10px;
+}
+.second-footer ul li a{
+    padding: 10px 5px;
+    font-size: 0.9rem;
+    color: var(--main-color);
 }
