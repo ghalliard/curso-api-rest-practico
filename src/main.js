@@ -18,13 +18,13 @@ const get_trending_movies_preview = async() =>{
         movie_title.innerText = movies_data[i].title
         const main_button = document.createElement('button');
         main_button.classList.add('main-button');
-        main_button.innerText = 'COMPRAR';
+        main_button.innerText = 'Comprar';
 
         movie_description.appendChild(movie_title);
         movie_description.appendChild(main_button);
         movie_poster_container.appendChild(movie_img);
         movie_poster_container.appendChild(movie_description);
-        article.appendChild(movie_poster_container)
+        article.appendChild(movie_poster_container);
     }
 
     
@@ -37,3 +37,4 @@ const get_trending_movies_preview = async() =>{
     }
 }
 get_trending_movies_preview();
+

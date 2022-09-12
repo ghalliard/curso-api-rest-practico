@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="../styles/style.css">
         <title>Movie Express</title>
     </head>
     <body>
@@ -12,11 +12,11 @@
             <a href="" class="navbar-icon-menu">
                 <div>
                     <div class="image-container">
-                        <img src="./assets/icons/menu.png" alt="">
+                        <img src="../assets/icons/menu.png" alt="">
                     </div>
                 </div>
             </a>
-            <a href="./index.html" class="navbar-icon-logo">
+            <a href="../index.html" class="navbar-icon-logo">
                 <div>
                     <p>Movie 3xpress</p>
                 </div>
@@ -24,36 +24,43 @@
             <a href="" class="navbar-icon-profile">
                 <div>
                     <div class="image-container">
-                        <img src="./assets/icons/user.png" alt="">
+                        <img src="../assets/icons/user.png" alt="">
                     </div>
                 </div>
             </a>
         </header>
 
-        <main>
-            <section class="best-premier-movies">
-                <article class="movie-list">
+        <main class="more-movies-main">
+            <section class="category-movie-list-section">
+                <div class="header-section">
+                    <h1>Peliculas</h1>
+                    <div class="categories">
+                        <div class="display-categories">
+                            <span>Categorias</span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="categorie-list-div--close">
+                    <div class="movie-container">
+                        <article class="movies">
 
-                </article>
-            </section>
+                        </article>
+                    </div>
 
-            <section class="movies-section">
-                <h2>Peliculas en cartelera</h2>
-                <article class="row1">
-                    <div class="movie1"></div>
-                    <div class="movie2"></div>
-                </article>
-                <article class="row2">
-                    <div class="movie3"></div>
-                    <div class="movie4"></div>
-                    <div class="movie5"></div>
-                </article>
-                <div class="button-container">
-                    <a class="main-button" href="./html/moreMovies.html">Ver más películas</a>
+                    <div class="button-container">
+                        <button class="main-button">Ver más películas</button>
+                    </div>
+                </div>
+                
+                <div class="categorie-list-div--open">
+                    <ul class="list">
+                        
+                    </ul>
                 </div>
             </section>
         </main>
-        
 
         <footer class="main-footer">
             <div class="primary-footer">
@@ -132,8 +139,9 @@
             </div>
         </footer>
 
-        <script src="./src/api-key.js"></script>
-        <script src="./src/header-scroll.js"></script>
-        <script src="./src/main.js"></script>
+        <script src="../src/api-key.js"></script>
+        <script src="../src/categories.js"></script>
+        <script src="../src/header-scroll.js"></script>
+        <script src="../src/more-movies.js"></script>
     </body>
 </html>
