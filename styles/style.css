@@ -167,7 +167,7 @@ a{
     padding-top: 48px;
 }
 .category-movie-list-section{
-    padding: 12px 24px;
+    padding: 32px;
 }
 .category-movie-list-section .header-section h1{
     font-size: 2.8rem;
@@ -211,12 +211,18 @@ a{
     color: var(--main-color);
 }
 .categories{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 1.4rem;
     padding: 16px 0;
     border-bottom: 1px solid var(--main-color);
     border-top: 1px solid var(--main-color);
 }
-.categories div{
+.close-categories{
+    display: none;
+}
+.categories .display-categories{
     display: inline-block;
 }
 .category-movie-list-section .button-container{
@@ -226,6 +232,11 @@ a{
 }
 .categorie-list-div--open{
     display: none;
+    font-size: 1.2rem;
+}
+.categorie-list-div--open .list .category-item{
+    padding: 12px;
+    border-bottom: 1px solid var(--main-color);
 }
 #open{
     display: block;
