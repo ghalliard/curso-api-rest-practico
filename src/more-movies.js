@@ -1,5 +1,6 @@
+location.hash = 'more-movies';
 const get_random_movies = async() =>{
-    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`); 
+    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`); 
     const data = await res.json();
     console.log(data);
 
@@ -40,7 +41,6 @@ const get_random_movies = async() =>{
         article.appendChild(movie_item);
     }
 }
-get_random_movies();
 
 const get_category_movie_list = async() =>{
     const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
@@ -58,4 +58,5 @@ const get_category_movie_list = async() =>{
     });
     container.appendChild(ul);
 }
+get_random_movies();
 get_category_movie_list();
