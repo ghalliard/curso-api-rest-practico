@@ -52,8 +52,18 @@ const get_category_movie_list = async() =>{
     const ul = document.querySelector('.categorie-list-div--open .list');
     category_list.forEach(element => {
         const li = document.createElement('li');
-        li.innerText = element.name;
+        const span = document.createElement('span');
+
+        span.innerText = element.name;
+        span.addEventListener('click', () =>{
+            location.hash = `#category=${element.id}-${element.name}`;
+            console.log(element.name);
+            list_categorie_container.removeAttribute('id');
+            categorie_list_div_close.removeAttribute('id');
+            categorie_button_container.removeAttribute('id');
+        });
         li.classList.add('category-item');
+        li.appendChild(span);
         ul.appendChild(li);
     });
     container.appendChild(ul);

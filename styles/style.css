@@ -93,7 +93,7 @@ a{
 .movies-section{
     padding: 16px 20px;
 }
-.movies-section h2{
+.second-title{
     margin-bottom: 12px;
     color: var(--main-color);
     font-size: 2rem;
