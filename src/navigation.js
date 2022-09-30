@@ -55,38 +55,12 @@ const get_movie_by_genre = async(id, genre) =>{
     const article = document.querySelector('.category-movie-list-section .movie-container article');
     article.innerHTML = "";
 
-    for(let i = 0; i < 5; i++){
-        const movie_item = document.createElement('div');
-        movie_item.classList.add('movie-item');
+    get_movies_fnc(movies_data, article);
 
-        const movie_img_container = document.createElement('div');
-        movie_img_container.classList.add('movie-img-container');
-
-        const movie_img = document.createElement('img');
-        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w300${movies_data[i].poster_path}`);
-
-        const movie_description = document.createElement('div');
-        movie_description.classList.add('movie-description');
-
-        const movie_title = document.createElement('h1');
-        movie_title.innerText = movies_data[i].title;
-
-        const main_button = document.createElement('button');
-        main_button.classList.add('main-button');
-        main_button.innerText = 'Comprar';
-
-        const second_button = document.createElement('button');
-        second_button.classList.add('second-button');
-        second_button.innerText = 'Ver detalles';
-
-        movie_img_container.appendChild(movie_img);
-        movie_description.appendChild(movie_title);
-        movie_description.appendChild(main_button);
-        movie_description.appendChild(second_button);
-        movie_item.appendChild(movie_img_container);
-        movie_item.appendChild(movie_description);
-        article.appendChild(movie_item);
-    }
+    window.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+    });
 }
 
 window.addEventListener('DOMContentLoaded', navigator, false);

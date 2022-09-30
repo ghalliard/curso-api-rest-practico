@@ -1,14 +1,6 @@
 location.hash = 'more-movies';
-const get_random_movies = async() =>{
-    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`); 
-    const data = await res.json();
-    console.log(data);
-
-    const movies_data = data.results;
-    console.log(movies_data);
-    
+const get_movies_fnc = (data, container) =>{
     for(let i = 0; i < 5; i++){
-        const article = document.querySelector('.category-movie-list-section .movie-container article');
         const movie_item = document.createElement('div');
         movie_item.classList.add('movie-item');
 
@@ -16,13 +8,13 @@ const get_random_movies = async() =>{
         movie_img_container.classList.add('movie-img-container');
 
         const movie_img = document.createElement('img');
-        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w300${movies_data[i].poster_path}`);
+        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w300${data[i].poster_path}`);
 
         const movie_description = document.createElement('div');
         movie_description.classList.add('movie-description');
 
         const movie_title = document.createElement('h1');
-        movie_title.innerText = movies_data[i].title;
+        movie_title.innerText = data[i].title;
 
         const main_button = document.createElement('button');
         main_button.classList.add('main-button');
@@ -38,8 +30,19 @@ const get_random_movies = async() =>{
         movie_description.appendChild(second_button);
         movie_item.appendChild(movie_img_container);
         movie_item.appendChild(movie_description);
-        article.appendChild(movie_item);
+        container.appendChild(movie_item);
     }
+}
+const get_random_movies = async() =>{
+    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`); 
+    const data = await res.json();
+    console.log(data);
+
+    const movies_data = data.results;
+    console.log(movies_data);
+    const article = document.querySelector('.category-movie-list-section .movie-container article');
+    
+    get_movies_fnc(movies_data, article);
 }
 
 const get_category_movie_list = async() =>{
@@ -60,7 +63,7 @@ const get_category_movie_list = async() =>{
             console.log(element.name);
             list_categorie_container.removeAttribute('id');
             categorie_list_div_close.removeAttribute('id');
-            categorie_button_container.removeAttribute('id');
+            categorie_button_container.removeAttribute('id'); 
         });
         li.classList.add('category-item');
         li.appendChild(span);
