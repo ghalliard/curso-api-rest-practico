@@ -9,9 +9,9 @@
     </head>
     <body>
         <header class="main-header">
-            <a href="" class="navbar-icon-menu">
+            <a class="navbar-icon-menu">
                 <div>
-                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-bars"></i>
                 </div>
             </a>
             <a href="./index.html" class="navbar-icon-logo">
@@ -19,11 +19,18 @@
                     <p>Movie 3xpress</p>
                 </div>
             </a>
-            <a href="" class="navbar-icon-profile">
-                <div>
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </a>
+            <div class="search-profile-container">
+                <a class="navbar-icon-profile">
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </a>
+                <a class="navbar-icon-search">
+                    <div>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </a>
+            </div>
         </header>
 
         <main>
@@ -50,6 +57,18 @@
             </section>
         </main>
         
+        <section class="search-section">
+            <div class="back-button-container">
+                <div class="back-button">
+                    <span><i class="fa-solid fa-arrow-left"></i></span>
+                    <span>Atrás</span>
+                </div>
+            </div>
+            <div class="search-container">
+                <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" placeholder="Buscador..." class="search-input">
+            </div>
+        </section>
 
         <footer class="main-footer">
             <div class="primary-footer">
@@ -131,8 +150,10 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://kit.fontawesome.com/2efc6209f0.js" crossorigin="anonymous"></script>
         <script src="./src/api-key.js"></script>
+        <script src="./src/axios.js"></script>
         <script src="./src/header-scroll.js"></script>
         <script src="./src/main.js"></script>
         <script src="./src/navigation.js"></script>
+        <script src="./src/search.js"></script>
     </body>
 </html>

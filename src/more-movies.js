@@ -1,5 +1,7 @@
 location.hash = 'more-movies';
+
 const get_movies_fnc = (data, container) =>{
+    container.innerHTML = '';
     for(let i = 0; i < 5; i++){
         const movie_item = document.createElement('div');
         movie_item.classList.add('movie-item');

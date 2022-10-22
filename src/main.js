@@ -1,12 +1,4 @@
-const api = axios.create({
-    baseURL: 'https://api.themoviedb.org/3/',
-    headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-    },
-    params: {
-        'api_key': apiKey,
-    },
-}); 
+location.hash = 'home-page';
 
 const get_trending_movies_preview = async() =>{
     const res = await api('trending/movie/day'); 
@@ -43,7 +35,7 @@ const get_trending_movies_preview = async() =>{
         div.appendChild(img);
     }
 }
-
+get_trending_movies_preview();
 /*
 FORMA TRADICIONAL:
 const get_trending_movies_preview = async() =>{
