@@ -1,4 +1,7 @@
 location.hash = 'more-movies';
+const close_categories = document.getElementById('close-category-button');
+const display_categories = document.querySelector('.display-categories');
+const h2 = document.querySelector('.movie-container .second-title');
 
 const get_movies_fnc = (data, container) =>{
     container.innerHTML = '';
@@ -10,7 +13,7 @@ const get_movies_fnc = (data, container) =>{
         movie_img_container.classList.add('movie-img-container');
 
         const movie_img = document.createElement('img');
-        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w300${data[i].poster_path}`);
+        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${data[i].poster_path}`);
 
         const movie_description = document.createElement('div');
         movie_description.classList.add('movie-description');
@@ -55,6 +58,7 @@ const get_category_movie_list = async() =>{
     const category_list = data.genres;
     const container = document.querySelector('.categorie-list-div--open');
     const ul = document.querySelector('.categorie-list-div--open .list');
+    ul.innerHTML = '';
     category_list.forEach(element => {
         const li = document.createElement('li');
         const span = document.createElement('span');
@@ -62,10 +66,8 @@ const get_category_movie_list = async() =>{
         span.innerText = element.name;
         span.addEventListener('click', () =>{
             location.hash = `#category=${element.id}-${element.name}`;
+            h2.innerText = element.name;
             console.log(element.name);
-            list_categorie_container.removeAttribute('id');
-            categorie_list_div_close.removeAttribute('id');
-            categorie_button_container.removeAttribute('id'); 
         });
         li.classList.add('category-item');
         li.appendChild(span);
@@ -73,5 +75,11 @@ const get_category_movie_list = async() =>{
     });
     container.appendChild(ul);
 }
-get_random_movies();
-get_category_movie_list();
+close_categories.addEventListener('click', () => {
+    location.hash = 'more-movies';
+    more_movies_fnc();
+});
+display_categories.addEventListener('click', () => {
+    location.hash = 'categories';
+    categories_fnc();
+});
