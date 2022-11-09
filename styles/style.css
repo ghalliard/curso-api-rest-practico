@@ -3,6 +3,7 @@
     --main-color: brown;
     --light-color: whitesmoke;
     --light-color-variation: rgba(245, 245, 245, 0.5);
+    --loading-color: #707B7C;
 }
 
 *{
@@ -352,7 +353,58 @@ a{
 .related-movie-item img{
     width: 120px;
 }
+/*Loading screens styles*/
+.movie-list--loading{
+    width: 100vw;
+    height: 565.5px;
+    background-color: var(--loading-color);
+    animation: loading-skeleton infinite 1.5s;
+}
+.movies-section-row1--loading{
+    width: 163.5px;
+    height: 248.25px;
+    background-color: var(--loading-color);
+    animation: loading-skeleton infinite 1.5s;
+}
+.movies-section-row2--loading{
+    width: 106.33px;
+    height: 162.52px;
+    background-color: var(--loading-color);
+    animation: loading-skeleton infinite 1.5s;
+}
+.movie-img-container--loading{
+    height: 180px;
+    background-color: var(--loading-color);
+    animation: loading-skeleton infinite 1.5s;
+}
+.h1--loading{
+    width: 100px;
+    height: 20px;
+    background-color: var(--loading-color);
+    animation: loading-skeleton infinite 1.5s;
+}
+.main-button--loading{
+    height: 30px;
+    background-color: var(--loading-color);
+    animation: loading-skeleton infinite 1.5s;
+}
+.second-button--loading{
+    height: 30px;
+    border: none;
+    background-color: var(--loading-color);
+    animation: loading-skeleton infinite 1.5s;
+}
 
+
+/*Animations*/
+@keyframes loading-skeleton{
+    0%, 100%{
+        opacity: 100%;
+    }
+    50%{
+        opacity: 50%;
+    }
+}
 
 #open{
     display: block;

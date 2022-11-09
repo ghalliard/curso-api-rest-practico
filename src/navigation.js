@@ -23,6 +23,8 @@ const navigator = () =>{
     } else if(location.hash.startsWith('#search')){
         console.log('search');
     } else if(location.hash.startsWith('#movie=')){
+        console.log(typeof location.hash);
+        document.querySelector('.main-header').classList.add('scroll-down');
         const [_, id] = location.hash.split('=');
         display_movie_details();
         get_movie_by_id(id);
