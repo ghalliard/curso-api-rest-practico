@@ -1,7 +1,8 @@
 location.hash = 'more-movies';
 const close_categories = document.getElementById('close-category-button');
 const display_categories = document.querySelector('.display-categories');
-const h2 = document.querySelector('.movie-container .second-title');
+const h2_more_movies = document.querySelector('.movie-container .second-title');
+let band_categories = false;
 
 const get_movies_fnc = (data, container) =>{
     container.innerHTML = '';
@@ -66,8 +67,6 @@ const get_category_movie_list = async() =>{
         span.innerText = element.name;
         span.addEventListener('click', () =>{
             location.hash = `#category=${element.id}-${element.name}`;
-            h2.innerText = element.name;
-            console.log(element.name);
         });
         li.classList.add('category-item');
         li.appendChild(span);
@@ -77,9 +76,7 @@ const get_category_movie_list = async() =>{
 }
 close_categories.addEventListener('click', () => {
     location.hash = 'more-movies';
-    more_movies_fnc();
 });
 display_categories.addEventListener('click', () => {
     location.hash = 'categories';
-    categories_fnc();
 });

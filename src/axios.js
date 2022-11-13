@@ -9,5 +9,13 @@ const api = axios.create({
     },
 }); 
 back_history_button.addEventListener('click', () =>{
-    history.back();
+    if(band_search && !location.hash.startsWith('#more-movies')){
+        history.go(-2);
+    } else if(band_categories && !location.hash.startsWith('#more-movies')){
+        console.log('2');
+        history.go(-2);
+    } else{
+        console.log('1');
+        history.back();
+    }
 });
