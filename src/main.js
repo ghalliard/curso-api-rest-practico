@@ -4,6 +4,7 @@ const get_trending_movies_preview = async() =>{
     const res = await api('trending/movie/day'); 
     console.log(res);
     const movies_data = res.data.results;
+    console.log(movies_data);
     const article = document.querySelector('.movie-list');
     article.innerHTML = '';
 
@@ -11,6 +12,7 @@ const get_trending_movies_preview = async() =>{
         const movie_poster_container = document.createElement('div');
 
         const movie_img = document.createElement('img');
+        movie_img.setAttribute('alt', `${movies_data[i].title} poster`);
         movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${movies_data[i].poster_path}`);
 
         const movie_description = document.createElement('div');

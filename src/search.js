@@ -4,10 +4,8 @@ let footer = document.querySelector('.main-footer');
 let main = document.querySelector('main');
 const search_icon = document.querySelector('.search-icon');
 const search_input = document.querySelector('.search-container input'); 
-let band_search = false; 
 
 search_btn.addEventListener('click', () =>{
-    band_categories = false;
     location.hash = 'search';
 });
 search_icon.addEventListener('click', () =>{

@@ -24,6 +24,7 @@ const get_movie_by_id = async(id) =>{
     console.log(movie);
 
     const img = document.querySelector('.movie-backdropPath img');
+    img.setAttribute('alt', `${movie.title} movie poster`);
     img.setAttribute('src', `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`);
     const title = document.querySelector('.movie-details h3');
     title.innerText = movie.title;
@@ -43,7 +44,7 @@ const getRelatedMoviesId = async (id) =>{
     const article = document.querySelector('.movie-recommendations-section');
     article.innerHTML = '';
 
-    for(let i = 0; i < 15; i++){
+    for(let i = 0; i < data.length; i++){
         const div = document.createElement('div');
         div.classList.add('related-movie-item');
         div.addEventListener('click', () =>{
@@ -51,9 +52,11 @@ const getRelatedMoviesId = async (id) =>{
         });
 
         const img = document.createElement('img');
-        img.setAttribute('src', `https://image.tmdb.org/t/p/w500${data[i].poster_path}`);
-
+        img.setAttribute('alt', `${data[i].title} movie poster`);
+        img.setAttribute('data-img', `https://image.tmdb.org/t/p/w500${data[i].poster_path}`);
+    
         div.appendChild(img);
+        lazyLoader.observe(img);
         article.appendChild(div);
     }
 }

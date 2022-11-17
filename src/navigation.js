@@ -10,8 +10,6 @@ const navigator = () =>{
         get_random_movies();
         search_fnc_close();
     } else if(location.hash.startsWith('#categories')){
-        band_categories = true;
-        band_search = false;
         console.log('categories');
         categories_fnc();
         get_category_movie_list();
@@ -31,8 +29,6 @@ const navigator = () =>{
     } else if(location.hash.startsWith('#search')){
         console.log('search');
         search_input.value = '';
-        band_search = true;
-        band_categories = false;
         search_fnc();
     } else if(location.hash.startsWith('#movie=')){
         const [_, id] = location.hash.split('=');
@@ -44,12 +40,12 @@ const navigator = () =>{
         get_trending_movies_preview();
         close_movie_details();
     }
-    
+    /*
     window.scrollTo({
         behavior: 'smooth',
         top: 0,
     });
-    
+    */
 }
 const more_movies_fnc = () =>{
     list_categorie_container.removeAttribute('id');

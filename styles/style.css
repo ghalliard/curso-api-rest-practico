@@ -344,14 +344,18 @@ a{
     margin-top: 12px;
 }
 .movie-recommendations-section{
+    width: 100%;
     display: flex;
+    height: auto;
     overflow-x: auto;
 }
 .related-movie-item{
+    width: 120px;
     margin-right: 8px;
 }
 .related-movie-item img{
     width: 120px;
+    height: 100%;
 }
 /*Loading screens styles*/
 .movie-list--loading{

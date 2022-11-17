@@ -2,7 +2,6 @@ location.hash = 'more-movies';
 const close_categories = document.getElementById('close-category-button');
 const display_categories = document.querySelector('.display-categories');
 const h2_more_movies = document.querySelector('.movie-container .second-title');
-let band_categories = false;
 
 const get_movies_fnc = (data, container) =>{
     container.innerHTML = '';

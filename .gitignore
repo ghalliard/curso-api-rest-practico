@@ -106,5 +106,8 @@ dist
 # api-key.js (mi api key es top secret)
 src/api-key.js
 
+# js de apredizaje 
+src/clase6-interceptionObserver.js
+
 # assets (imagenes e iconos yts)
 assets
