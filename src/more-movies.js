@@ -12,8 +12,18 @@ const get_movies_fnc = (data, container) =>{
         const movie_img_container = document.createElement('div');
         movie_img_container.classList.add('movie-img-container');
 
-        const movie_img = document.createElement('img');
-        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${data[i].poster_path}`);
+        
+        if(data[i].poster_path != null){
+            const movie_img = document.createElement('img');
+            movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${data[i].poster_path}`);
+            movie_img_container.appendChild(movie_img);
+        } else{
+            const text = document.createElement('p');
+            text.classList.add('class', 'null-image-text');
+            text.innerText = data[i].title;
+            movie_img_container.classList.add('movie-img-container--null-image');
+            movie_img_container.appendChild(text);
+        }
 
         const movie_description = document.createElement('div');
         movie_description.classList.add('movie-description');
@@ -29,7 +39,6 @@ const get_movies_fnc = (data, container) =>{
         second_button.classList.add('second-button');
         second_button.innerText = 'Ver detalles';
 
-        movie_img_container.appendChild(movie_img);
         movie_description.appendChild(movie_title);
         movie_description.appendChild(main_button);
         movie_description.appendChild(second_button);
@@ -38,6 +47,7 @@ const get_movies_fnc = (data, container) =>{
         container.appendChild(movie_item);
     }
 }
+
 const get_random_movies = async() =>{
     const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`); 
     const data = await res.json();

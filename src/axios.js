@@ -1,5 +1,6 @@
 const back_history_button = document.querySelector('.back-history-button');
 
+
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
@@ -14,20 +15,19 @@ back_history_button.addEventListener('click', () =>{
 });
 
 /*lazy loading*/
-const loadImages_fnc = (entries) =>{
-    entries.forEach((entry) =>{
-        if(entry.isIntersecting){
-            console.log({entry});
-            const url = entry.target.getAttribute('data-img');
-            entry.target.setAttribute('src', url);
+const observer_fnc = (entries) =>{
+    entries.forEach(element => {
+        if(element.isIntersecting){
+            const url = element.target.getAttribute('data-img');
+            element.target.setAttribute('src', url);
         }
     });
 }
-const lazyLoader = new IntersectionObserver(loadImages_fnc, {
-    root: null,
-    rootMargin: '0px -32px 0px -32px',
-    threshold: 0.0,
-});
+
+const observador = new IntersectionObserver(observer_fnc);
+
+
+
 
 /* 
 const lazyLoader = new IntersectionObserver((entries) =>{

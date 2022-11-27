@@ -40,12 +40,11 @@ const navigator = () =>{
         get_trending_movies_preview();
         close_movie_details();
     }
-    /*
+
     window.scrollTo({
         behavior: 'smooth',
         top: 0,
     });
-    */
 }
 const more_movies_fnc = () =>{
     list_categorie_container.removeAttribute('id');
