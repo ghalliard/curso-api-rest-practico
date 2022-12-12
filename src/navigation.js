@@ -8,7 +8,7 @@ const navigator = () =>{
         h2_more_movies.innerText = 'Trending Movies';
         more_movies_fnc();
         get_random_movies();
-        search_fnc_close();
+        //search_fnc_close();
     } else if(location.hash.startsWith('#categories')){
         console.log('categories');
         categories_fnc();
@@ -36,7 +36,7 @@ const navigator = () =>{
         display_movie_details();
         get_movie_by_id(id);
 
-    } else{
+    } else if(location.hash.startsWith('#home-page')){
         get_trending_movies_preview();
         close_movie_details();
     }

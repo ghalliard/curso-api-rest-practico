@@ -3,9 +3,19 @@ const close_categories = document.getElementById('close-category-button');
 const display_categories = document.querySelector('.display-categories');
 const h2_more_movies = document.querySelector('.movie-container .second-title');
 
-const get_movies_fnc = (data, container) =>{
-    container.innerHTML = '';
-    for(let i = 0; i < 5; i++){
+const get_movies_fnc = (data, container, index = 0) =>{
+    let aux;
+    if(index === 0){
+        container.innerHTML = '';
+    }
+    if(index === 15){
+        aux = index + 3;
+        console.log(aux);
+    } else{
+        aux = index + 5;
+    }
+    
+    for(index; index < aux; index++){
         const movie_item = document.createElement('div');
         movie_item.classList.add('movie-item');
 
@@ -13,14 +23,14 @@ const get_movies_fnc = (data, container) =>{
         movie_img_container.classList.add('movie-img-container');
 
         
-        if(data[i].poster_path != null){
+        if(data[index].poster_path != null){
             const movie_img = document.createElement('img');
-            movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${data[i].poster_path}`);
+            movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${data[index].poster_path}`);
             movie_img_container.appendChild(movie_img);
         } else{
             const text = document.createElement('p');
             text.classList.add('class', 'null-image-text');
-            text.innerText = data[i].title;
+            text.innerText = data[index].title;
             movie_img_container.classList.add('movie-img-container--null-image');
             movie_img_container.appendChild(text);
         }
@@ -29,7 +39,7 @@ const get_movies_fnc = (data, container) =>{
         movie_description.classList.add('movie-description');
 
         const movie_title = document.createElement('h1');
-        movie_title.innerText = data[i].title;
+        movie_title.innerText = data[index].title;
 
         const main_button = document.createElement('button');
         main_button.classList.add('main-button');
