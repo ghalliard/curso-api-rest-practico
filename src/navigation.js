@@ -1,6 +1,7 @@
 const list_categorie_container = document.querySelector('.categorie-list-div--open');
 const categorie_list_div_close = document.querySelector('.categorie-list-div--close');
 const categorie_button_container = document.querySelector('.close-categories');
+// let infiniteScroll; variable para tener un infinite scroll dinamico, es decir para que la solicitud no solo se haga a un endpoint, sino que cambie dependiendo de la navegacion. 
 
 const navigator = () =>{
     if(location.hash.startsWith('#more-movies')){

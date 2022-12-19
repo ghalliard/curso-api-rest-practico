@@ -3,17 +3,14 @@ const close_categories = document.getElementById('close-category-button');
 const display_categories = document.querySelector('.display-categories');
 const h2_more_movies = document.querySelector('.movie-container .second-title');
 
-const get_movies_fnc = (data, container, index = 0) =>{
+const get_movies_fnc = (data, container, index = 0, page = 1) =>{
     let aux;
-    if(index === 0){
+    if(index === 0 && page === 1){
         container.innerHTML = '';
     }
-    if(index === 15){
-        aux = index + 3;
-        console.log(aux);
-    } else{
+    if(index < 20){
         aux = index + 5;
-    }
+    } 
     
     for(index; index < aux; index++){
         const movie_item = document.createElement('div');
