@@ -2,6 +2,12 @@ location.hash = 'more-movies';
 const close_categories = document.getElementById('close-category-button');
 const display_categories = document.querySelector('.display-categories');
 const h2_more_movies = document.querySelector('.movie-container .second-title');
+const article = document.querySelector('.category-movie-list-section .movie-container article');
+
+let active_infiniteScroll = false;
+let var_page = 1;
+let var_categories = 0;
+let i;
 
 const get_movies_fnc = (data, container, index = 0, page = 1) =>{
     let aux;
@@ -56,15 +62,39 @@ const get_movies_fnc = (data, container, index = 0, page = 1) =>{
 }
 
 const get_random_movies = async() =>{
-    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`); 
-    const data = await res.json();
-    console.log(data);
-
-    const movies_data = data.results;
-    console.log(movies_data);
-    const article = document.querySelector('.category-movie-list-section .movie-container article');
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+    const scrollIsBottom = (scrollTop + clientHeight >= scrollHeight - 725);
     
-    get_movies_fnc(movies_data, article);
+    if(!active_infiniteScroll){
+        i += 5
+        const res = await api('trending/movie/day', {
+            params: {
+                page: var_page,
+            },
+        }); 
+        console.log(res);
+        const movies_data = res.data.results;
+        console.log(movies_data);
+        get_movies_fnc(movies_data, article, i, var_page);
+    } else if(scrollIsBottom){
+        if(i < 20){
+            i += 5;
+        }
+        if(i%20 == 0){
+            var_page++;
+            i = 0;
+        }
+        console.log(i);
+        const res = await api('trending/movie/day', {
+            params: {
+                page: var_page,
+            },
+        }); 
+        console.log(res);
+        const movies_data = res.data.results;
+        console.log(movies_data);
+        get_movies_fnc(movies_data, article, i, var_page);
+    }
 }
 
 const get_category_movie_list = async() =>{
@@ -94,5 +124,6 @@ close_categories.addEventListener('click', () => {
     location.hash = 'more-movies';
 });
 display_categories.addEventListener('click', () => {
+    var_categories++;
     location.hash = 'categories';
 });

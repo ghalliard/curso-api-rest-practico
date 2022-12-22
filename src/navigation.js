@@ -1,30 +1,39 @@
 const list_categorie_container = document.querySelector('.categorie-list-div--open');
 const categorie_list_div_close = document.querySelector('.categorie-list-div--close');
 const categorie_button_container = document.querySelector('.close-categories');
-// let infiniteScroll; variable para tener un infinite scroll dinamico, es decir para que la solicitud no solo se haga a un endpoint, sino que cambie dependiendo de la navegacion. 
+let infiniteScroll; // variable para tener un infinite scroll dinamico, es decir para que la solicitud no solo se haga a un endpoint, sino que cambie dependiendo de la navegacion. 
+let var_genre;
+let var_query;
 
 const navigator = () =>{
+    i=-5
     if(location.hash.startsWith('#more-movies')){
         console.log('more movies');
         h2_more_movies.innerText = 'Trending Movies';
+        search_fnc_close();
         more_movies_fnc();
         get_random_movies();
-        //search_fnc_close();
+        infiniteScroll = get_random_movies;
     } else if(location.hash.startsWith('#categories')){
         console.log('categories');
+        if(var_categories == 1){
+            get_category_movie_list();
+        }
         categories_fnc();
-        get_category_movie_list();
-
     } else if(location.hash.startsWith('#category=')){
         console.log('category');
+        infiniteScroll = get_movie_by_genre;
         const [_, categoryData] = location.hash.split('='); // crea un array asi => [#category, 28-Action]
         const [id, genre] = categoryData.split('-'); // => [28, Action]
+        var_genre = id;
         more_movies_fnc();
         get_movie_by_genre(id, genre);
 
     } else if(location.hash.startsWith('#searching=')){
         console.log('searching');
         const [_, query] = location.hash.split('=');
+        var_query = query;
+        infiniteScroll = get_movies_by_search;
         get_movies_by_search(query);
         search_fnc_close();
     } else if(location.hash.startsWith('#search')){
@@ -60,30 +69,80 @@ const categories_fnc = () =>{
 }
 
 const get_movie_by_genre = async(id, genre) =>{
-    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}`); 
-    const data = await res.json();
-    //console.log(data);
-    const movies_data = data.results;
-    //console.log(movies_data);
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+    const scrollIsBottom = (scrollTop + clientHeight >= scrollHeight - 725);
+    
+    if(!active_infiniteScroll){
+        i += 5
+        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}`); 
+        const data = await res.json();
+        const movies_data = data.results;
+        console.log(movies_data);
 
-    h2_more_movies.textContent = genre;
-    const article = document.querySelector('.category-movie-list-section .movie-container article');
-    article.innerHTML = "";
+        h2_more_movies.textContent = genre;
+        article.innerHTML = "";
+        get_movies_fnc(movies_data, article, i, var_page);
+    } else if(scrollIsBottom){
+        if(i < 20){
+            i += 5;
+        }
 
-    get_movies_fnc(movies_data, article);
+        if(i%20 == 0){
+            var_page++;
+            i = 0;
+        }
+        console.log(i);
+        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${var_genre}&page=${var_page}`); 
+        const data = await res.json();
+        const movies_data = data.results;
+
+        console.log(movies_data);
+        get_movies_fnc(movies_data, article, i, var_page);
+    }
 }
 const get_movies_by_search = async(query) =>{
-    const data = await api('/search/movie', {
-        params: {
-            query,
-        },
-    });
-    h2_more_movies.textContent = `Resultado: ${query}`;
-    const article = document.querySelector('.category-movie-list-section .movie-container article');
-    const res = data.data.results;
-    console.log(res);
-    get_movies_fnc(res, article);
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+    const scrollIsBottom = (scrollTop + clientHeight >= scrollHeight - 725);
+
+    if(!active_infiniteScroll){
+        i += 5
+        const res = await api('/search/movie', {
+            params: {
+                query,
+            },
+        });
+        const movies_data = res.data.results;
+        console.log(movies_data);
+        get_movies_fnc(movies_data, article, i, var_page);
+    } else if(scrollIsBottom){
+        if(i < 20){
+            i += 5;
+        }
+        if(i%20 == 0){
+            var_page++;
+            i = 0;
+        } 
+        console.log(i);
+        const res = await api('/search/movie', {
+            params: {
+                query: var_query,
+                page: var_page,
+            },
+        });
+        const movies_data = res.data.results;
+        console.log(movies_data);
+
+        get_movies_fnc(movies_data, article, i, var_page);
+    }
 }
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
+if(location.hash != '#home-page'){
+    window.addEventListener('scroll', () =>{
+        if(active_infiniteScroll){
+            infiniteScroll();
+        }
+    }, { passive: false });
+}
+
