@@ -6,7 +6,8 @@ let var_genre;
 let var_query;
 
 const navigator = () =>{
-    i=-5
+    i=-5;
+    var_counterResult = 0;
     if(location.hash.startsWith('#more-movies')){
         console.log('more movies');
         h2_more_movies.innerText = 'Trending Movies';
@@ -73,29 +74,30 @@ const get_movie_by_genre = async(id, genre) =>{
     const scrollIsBottom = (scrollTop + clientHeight >= scrollHeight - 725);
     
     if(!active_infiniteScroll){
-        i += 5
-        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}`); 
-        const data = await res.json();
-        const movies_data = data.results;
+        var_counterResult += 5;
+        i +=5;
+        const res = await api('discover/movie', {
+            params: {
+                with_genres: id,
+            },
+        });
+        const movies_data = res.data.results;
+        var_maxResult = res.data.total_results;
         console.log(movies_data);
 
         h2_more_movies.textContent = genre;
         article.innerHTML = "";
         get_movies_fnc(movies_data, article, i, var_page);
-    } else if(scrollIsBottom){
-        if(i < 20){
-            i += 5;
-        }
-
-        if(i%20 == 0){
-            var_page++;
-            i = 0;
-        }
-        console.log(i);
-        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${var_genre}&page=${var_page}`); 
-        const data = await res.json();
-        const movies_data = data.results;
-
+    } else if(scrollIsBottom && var_counterResult < var_maxResult){
+        var_counterResult += 5;
+        i +=5;
+        const res = await api('discover/movie', {
+            params: {
+                with_genres: var_genre,
+                page: var_page,
+            },
+        });
+        const movies_data = res.data.results;
         console.log(movies_data);
         get_movies_fnc(movies_data, article, i, var_page);
     }
@@ -105,24 +107,21 @@ const get_movies_by_search = async(query) =>{
     const scrollIsBottom = (scrollTop + clientHeight >= scrollHeight - 725);
 
     if(!active_infiniteScroll){
-        i += 5
+        var_counterResult += 5;
+        i += 5;
         const res = await api('/search/movie', {
             params: {
                 query,
             },
         });
         const movies_data = res.data.results;
-        console.log(movies_data);
+        var_maxResult = res.data.total_results;
+        h2_more_movies.innerText = `Resultado: ${query}`;
+
         get_movies_fnc(movies_data, article, i, var_page);
-    } else if(scrollIsBottom){
-        if(i < 20){
-            i += 5;
-        }
-        if(i%20 == 0){
-            var_page++;
-            i = 0;
-        } 
-        console.log(i);
+    } else if(scrollIsBottom && var_counterResult < var_maxResult){
+        var_counterResult += 5;
+        i +=5;
         const res = await api('/search/movie', {
             params: {
                 query: var_query,
@@ -130,8 +129,7 @@ const get_movies_by_search = async(query) =>{
             },
         });
         const movies_data = res.data.results;
-        console.log(movies_data);
-
+        console.log(var_counterResult);
         get_movies_fnc(movies_data, article, i, var_page);
     }
 }
@@ -140,7 +138,7 @@ window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 if(location.hash != '#home-page'){
     window.addEventListener('scroll', () =>{
-        if(active_infiniteScroll){
+        if(active_infiniteScroll && var_counterResult < var_maxResult){
             infiniteScroll();
         }
     }, { passive: false });
