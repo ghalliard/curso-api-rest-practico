@@ -7,9 +7,7 @@ const article = document.querySelector('.category-movie-list-section .movie-cont
 let active_infiniteScroll = false;
 let var_maxResult;
 let var_counterResult;
-let var_page = 1;
 let var_categories = 0;
-let i;
 
 const get_movies_fnc = (data, container, index = 0, page = 1) =>{
     let aux;
@@ -70,42 +68,52 @@ const get_movies_fnc = (data, container, index = 0, page = 1) =>{
         movie_item.appendChild(movie_description);
         container.appendChild(movie_item);
     }
-    if(aux == 20){
-        i = -5;
-        var_page++;
-    }
 }
 
-const get_random_movies = async() =>{
-    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
-    const scrollIsBottom = (scrollTop + clientHeight >= scrollHeight - 725); //calcula cuando se llegue a cierta parte para activar el scroll infinito
-    
-    if(!active_infiniteScroll){
-        var_counterResult += 5;
-        i +=5;
-        const res = await api('trending/movie/day', {
-            params: {
-                page: var_page,
-            },
-        }); 
-        const movies_data = res.data.results;
-        var_maxResult = res.data.total_results;
-        console.log(movies_data);
-        get_movies_fnc(movies_data, article, i, var_page);
+const get_random_movies = () =>{
+    let i = -5, page = 1; 
+    return async function(){
+        const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+        const scrollIsBottom = (scrollTop + clientHeight >= scrollHeight - 725); //calcula cuando se llegue a cierta parte para activar el scroll infinito
+        
+        if(!active_infiniteScroll){
+            var_counterResult += 5;
+            if(i < 15){
+                i += 5;
+            } else if(i == 15){
+                i = 0;
+                page++;
+            }
+            const res = await api('trending/movie/day', {
+                params: {
+                    page,
+                },
+            }); 
+            const movies_data = res.data.results;
+            var_maxResult = res.data.total_results;
+            console.log(movies_data);
+            get_movies_fnc(movies_data, article, i, page);
 
-    } else if(scrollIsBottom && var_counterResult < var_maxResult){
-        var_counterResult += 5;
-        i +=5;
-        const res = await api('trending/movie/day', {
-            params: {
-                page: var_page,
-            },
-        }); 
-        console.log(res);
-        const movies_data = res.data.results;
-        console.log(movies_data);
-        get_movies_fnc(movies_data, article, i, var_page);
+        } else if(scrollIsBottom && var_counterResult < var_maxResult){
+            var_counterResult += 5;
+            if(i < 15){
+                i += 5;
+            } else if(i == 15){
+                i = 0;
+                page++;
+            }
+            const res = await api('trending/movie/day', {
+                params: {
+                    page,
+                },
+            }); 
+            console.log(res);
+            const movies_data = res.data.results;
+            console.log(movies_data);
+            get_movies_fnc(movies_data, article, i, page);
+        }
     }
+    
 }
 
 const get_category_movie_list = async() =>{
