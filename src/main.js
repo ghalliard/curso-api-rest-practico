@@ -1,12 +1,10 @@
 location.hash = 'home-page';
-
+const article = document.querySelector('.movie-list');
 const get_trending_movies_preview = async() =>{
-    const res = await api('trending/movie/day'); 
-    console.log(res);
-    const movies_data = res.data.results;
-    console.log(movies_data);
-    const article = document.querySelector('.movie-list');
     article.innerHTML = '';
+    const res = await api('trending/movie/day'); 
+    const movies_data = res.data.results;
+    console.log(res);
 
     for(let i = 0; i < 5; i++){
         const movie_poster_container = document.createElement('div');
@@ -36,13 +34,23 @@ const get_trending_movies_preview = async() =>{
     }
 
     for(let i = 5; i < 10; i++){
+        const button = document.createElement('button');
+        button.classList.add('liked-button');
+        button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+        button.addEventListener('click', () =>{
+            button.classList.toggle('liked-button--active');
+        });
+
         const div = document.querySelector(`.movie${i-4}`);
         div.innerHTML = '';
+
         const img = document.createElement('img');
         img.classList.add('image');
         img.setAttribute('src', `https://image.tmdb.org/t/p/w500${movies_data[i].poster_path}`);
+
         div.appendChild(img);
-        div.addEventListener('click', () =>{
+        div.appendChild(button);
+        img.addEventListener('click', () =>{
             location.hash = `movie=${movies_data[i].id}`;
         });
     }

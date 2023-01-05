@@ -121,7 +121,7 @@ a{
 }
 .button-container{
     text-align: center;
-    margin-top: 12px;
+    margin: 12px 0;
     font-size: 1.2rem;
 }
 
@@ -345,7 +345,7 @@ a{
 .movie-recommendations-container{
     margin-top: 12px;
 }
-.movie-recommendations-section{
+.movie-recommendations-section, .favorite-movies-section{
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
@@ -403,7 +403,7 @@ a{
 .related-movie-item--loading{
     width: 120px;
     margin-right: 8px;
-    height: 183px;
+    height: 180px;
     background-color: var(--loading-color);
     animation: loading-skeleton infinite 1.5s;
 }
@@ -418,6 +418,28 @@ a{
     color: var(--light-color);
     font-size: 1.6rem;
 }
+.trending-movies-section-1 div{
+    position: relative;
+}
+.liked-button{
+    display: grid;
+    place-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 2rem;
+    color: var(--light-color);
+    background-color: hsla(0,59%,41%, 0.3);
+    border: none;
+    border-radius: 50%;
+}
+.liked-button--active{
+    color: red;
+    background-color:hsla(0,0%,96%, 0.4);
+}
+
 
 /*Animations*/
 @keyframes loading-skeleton{

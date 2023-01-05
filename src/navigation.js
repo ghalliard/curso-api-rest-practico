@@ -136,7 +136,7 @@ const get_movies_by_search = (query) =>{
             const movies_data = res.data.results;
             var_maxResult = res.data.total_results;
             h2_more_movies.innerText = `Resultado: ${query}`;
-
+            console.log(res);
             get_movies_fnc(movies_data, article, i, page);
         } else if(scrollIsBottom && var_counterResult < var_maxResult){
             var_counterResult += 5;
@@ -152,6 +152,7 @@ const get_movies_by_search = (query) =>{
                     page,
                 },
             });
+            console.log(res);
             const movies_data = res.data.results;
             console.log(var_counterResult, res);
             get_movies_fnc(movies_data, article, i, page);
