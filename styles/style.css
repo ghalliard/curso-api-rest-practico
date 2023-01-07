@@ -401,6 +401,7 @@ a{
     animation: loading-skeleton infinite 1.5s;
 }
 .related-movie-item--loading{
+    flex-shrink: 0;
     width: 120px;
     margin-right: 8px;
     height: 180px;
