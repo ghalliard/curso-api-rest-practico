@@ -39,6 +39,7 @@ const get_trending_movies_preview = async() =>{
         button.innerHTML = '<i class="fa-solid fa-heart"></i>';
         button.addEventListener('click', () =>{
             button.classList.toggle('liked-button--active');
+            likeMovie(movies_data[i]);
         });
 
         const div = document.querySelector(`.movie${i-4}`);
