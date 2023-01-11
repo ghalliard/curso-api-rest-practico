@@ -1,5 +1,6 @@
 location.hash = 'home-page';
 const article = document.querySelector('.movie-list');
+
 const get_trending_movies_preview = async() =>{
     article.innerHTML = '';
     const res = await api('trending/movie/day'); 
@@ -40,6 +41,7 @@ const get_trending_movies_preview = async() =>{
         button.addEventListener('click', () =>{
             button.classList.toggle('liked-button--active');
             likeMovie(movies_data[i]);
+            getFavoriteMovies();
         });
 
         const div = document.querySelector(`.movie${i-4}`);

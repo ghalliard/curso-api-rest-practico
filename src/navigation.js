@@ -47,10 +47,10 @@ const navigator = () =>{
         get_movie_by_id(id);
 
     } else if(location.hash.startsWith('#home-page')){
+        getFavoriteMovies();
         get_trending_movies_preview();
         close_movie_details();
     }
-
     window.scrollTo({
         behavior: 'smooth',
         top: 0,
