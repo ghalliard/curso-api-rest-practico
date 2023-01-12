@@ -41,6 +41,19 @@ const get_movies_fnc = (data, container, index = 0, page = 1) =>{
         const movie_img_container = document.createElement('div');
         movie_img_container.classList.add('movie-img-container');
 
+        // boton de like
+        const button = document.createElement('button');
+        const movieListObj = likedMoviesList();
+        if(movieListObj[data[index].id]){
+            button.classList.add('liked-button--active');
+        }
+        button.classList.add('liked-button');
+        button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+        button.addEventListener('click', () =>{
+            button.classList.toggle('liked-button--active');
+            likeMovie(data[index]);
+            getFavoriteMovies();
+        });
         
         if(data[index].poster_path != null){
             const movie_img = document.createElement('img');
@@ -71,6 +84,7 @@ const get_movies_fnc = (data, container, index = 0, page = 1) =>{
         movie_description.appendChild(movie_title);
         movie_description.appendChild(main_button);
         movie_description.appendChild(second_button);
+        movie_img_container.appendChild(button);
         movie_item.appendChild(movie_img_container);
         movie_item.appendChild(movie_description);
         container.appendChild(movie_item);
