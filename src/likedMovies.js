@@ -3,9 +3,10 @@ const getFavoriteMovies = () =>{
     const movieArray = Object.values(objMovieList);
     const article = document.querySelector('.favorite-movies-section');
 
-    favoriteMovies_Fnc(movieArray, article);
+    if(location.hash == '#home-page'){
+        favoriteMovies_Fnc(movieArray, article);
+    }
     
-    console.log(movieArray);
 }
 
 const favoriteMovies_Fnc = (movieArray, article) =>{
@@ -24,7 +25,6 @@ const favoriteMovies_Fnc = (movieArray, article) =>{
             getFavoriteMovies();
         });
 
-        console.log(element);
         const div = document.createElement('div');
         div.classList.add('movie-img-container');
         div.classList.add('related-movie-item');
@@ -37,3 +37,26 @@ const favoriteMovies_Fnc = (movieArray, article) =>{
         article.appendChild(div);
     });
 }
+if(location.hash == '#more-movies'){
+    document.getElementById('more-movies-box').addEventListener('click', (e) =>{
+        if(e.target.className == 'fa-solid fa-heart'){
+            prueba_fnc(e.target.id);
+        }
+    });
+    const prueba_fnc = async(id) =>{
+        const res = await api(`/movie/${id}`); 
+        const movie = res.data;
+        likeMovie(movie);
+        console.log(movie);
+}
+}
+
+/*
+const prueba_fnc = (movie) =>{
+    document.getElementById('more-movies-box').addEventListener('click', (e) => {
+        if(e.target.className == 'fa-solid fa-heart'){
+            console.log(movie);
+        }
+    });
+}
+*/

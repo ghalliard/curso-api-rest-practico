@@ -33,28 +33,29 @@ const get_movies_fnc = (data, container, index = 0, page = 1) =>{
     } else{
         aux = index + 5;
     } 
-    
+
     for(index; index < aux; index++){
+        // boton de like
+        const button = document.createElement('button');
+        const movieListObj = likedMoviesList();
+        
+        if(movieListObj[data[index].id]){
+            button.classList.add('liked-button--active');
+        }
+        button.classList.add('liked-button');
+        button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+        button.firstChild.setAttribute('id', data[index].id);
+        button.addEventListener('click', () =>{
+            button.classList.toggle('liked-button--active');
+        });
+        // fin boton de like
+
         const movie_item = document.createElement('div');
         movie_item.classList.add('movie-item');
 
         const movie_img_container = document.createElement('div');
         movie_img_container.classList.add('movie-img-container');
 
-        // boton de like
-        const button = document.createElement('button');
-        const movieListObj = likedMoviesList();
-        if(movieListObj[data[index].id]){
-            button.classList.add('liked-button--active');
-        }
-        button.classList.add('liked-button');
-        button.innerHTML = '<i class="fa-solid fa-heart"></i>';
-        button.addEventListener('click', () =>{
-            button.classList.toggle('liked-button--active');
-            likeMovie(data[index]);
-            getFavoriteMovies();
-        });
-        
         if(data[index].poster_path != null){
             const movie_img = document.createElement('img');
             movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${data[index].poster_path}`);

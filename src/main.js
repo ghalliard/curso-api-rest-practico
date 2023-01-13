@@ -62,6 +62,9 @@ const get_trending_movies_preview = async() =>{
         });
     }
 }
+
+
+
 /*
 FORMA TRADICIONAL:
 const get_trending_movies_preview = async() =>{
