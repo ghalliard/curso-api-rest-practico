@@ -2,6 +2,7 @@ const list_categorie_container = document.querySelector('.categorie-list-div--op
 const categorie_list_div_close = document.querySelector('.categorie-list-div--close');
 const categorie_button_container = document.querySelector('.close-categories');
 let infiniteScroll; // variable para tener un infinite scroll dinamico, es decir para que la solicitud no solo se haga a un endpoint, sino que cambie dependiendo de la navegacion. 
+let var_categories = 0;
 
 const navigator = () =>{
     var_counterResult = 0;
@@ -14,9 +15,10 @@ const navigator = () =>{
         infiniteScroll();
 
     } else if(location.hash.startsWith('#categories')){
+        var_categories++;
         console.log('categories');
         if(var_categories == 1){
-            get_category_movie_list();
+           get_category_movie_list(); 
         }
         categories_fnc();
 
@@ -51,11 +53,20 @@ const navigator = () =>{
         get_trending_movies_preview();
         close_movie_details();
     }
+    
     window.scrollTo({
         behavior: 'smooth',
         top: 0,
     });
+    
+    
 }
+// menu desplegable
+document.querySelector('.navbar-icon-menu').addEventListener('click', () =>{
+    document.querySelector('.menu-section').classList.add('menu-section--active');
+    document.body.classList.add('scroll-inactive');
+});
+
 const more_movies_fnc = () =>{
     list_categorie_container.removeAttribute('id');
     categorie_list_div_close.removeAttribute('id');

@@ -360,6 +360,25 @@ a{
     width: 120px;
     min-height: 180px;
 }
+
+.menu-section{
+    width: 60vw;
+    height: 100vh;
+    padding: 20px;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    transform: translate(-255px);
+    z-index: 2;
+    transition: transform 1s;
+}
+.menu-section--active{
+    transform: translate(0px);
+}
+.scroll-inactive{
+    overflow-y: hidden;
+}
+
 /*favorite movies*/
 .favorite-movies-section .movie-img-container img{
     width: 100%;

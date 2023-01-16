@@ -2,10 +2,10 @@ location.hash = 'home-page';
 const article = document.querySelector('.movie-list');
 
 const get_trending_movies_preview = async() =>{
-    article.innerHTML = '';
     const res = await api('trending/movie/day'); 
     const movies_data = res.data.results;
     console.log(res);
+    article.innerHTML = '';
 
     for(let i = 0; i < 5; i++){
         const movie_poster_container = document.createElement('div');

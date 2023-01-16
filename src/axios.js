@@ -10,6 +10,7 @@ const api = axios.create({
     },
     params: {
         'api_key': apiKey,
+        'language': 'es',
     },
 }); 
 back_history_button.addEventListener('click', () =>{

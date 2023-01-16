@@ -79,6 +79,5 @@ close_categories.addEventListener('click', () => {
     location.hash = 'more-movies';
 });
 display_categories.addEventListener('click', () => {
-    var_categories++;
     location.hash = 'categories';
 });
