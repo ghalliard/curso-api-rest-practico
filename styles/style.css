@@ -24,6 +24,10 @@ li{
 a{
     display: inline-block;
 }
+button{
+    border: none;
+    background: none;
+}
 
 .main-header{
     display: flex;
@@ -368,15 +372,35 @@ a{
     background-color: var(--main-color);
     position: absolute;
     top: 0;
-    transform: translate(-255px);
+    left: -255px;
     z-index: 2;
-    transition: transform 1s;
+    transition: left 0.5s;
 }
 .menu-section--active{
-    transform: translate(0px);
+    left: 0;
 }
 .scroll-inactive{
     overflow-y: hidden;
+}
+.menu-list{
+    margin-top: 12px;
+}
+.menu-list__item{
+    margin-bottom: 8px;
+    overflow: hidden; 
+}
+.menu-list__button a, .menu-list__button button, .menu-sublist__item button{
+    color: var(--light-color);
+    font-size: 1.6rem;
+}
+.menu-sublist{
+    height: 0;
+    display: grid;
+    gap: 4px;
+    margin-left: 4px;
+    padding-left: 60px;
+    border-left: 1px solid var(--light-color);
+    transition: height 0.5s;
 }
 
 /*favorite movies*/

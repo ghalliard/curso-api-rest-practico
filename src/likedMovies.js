@@ -48,7 +48,7 @@ if(location.hash == '#more-movies'){
         const movie = res.data;
         likeMovie(movie);
         console.log(movie);
-}
+    }
 }
 
 /*

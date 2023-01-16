@@ -4,6 +4,7 @@ const categorie_button_container = document.querySelector('.close-categories');
 let infiniteScroll; // variable para tener un infinite scroll dinamico, es decir para que la solicitud no solo se haga a un endpoint, sino que cambie dependiendo de la navegacion. 
 let var_categories = 0;
 
+
 const navigator = () =>{
     var_counterResult = 0;
     if(location.hash.startsWith('#more-movies')){
@@ -64,6 +65,7 @@ const navigator = () =>{
 // menu desplegable
 document.querySelector('.navbar-icon-menu').addEventListener('click', () =>{
     document.querySelector('.menu-section').classList.add('menu-section--active');
+    document.querySelector('.menu-section').style.top = `${document.documentElement.scrollTop}px`;
     document.body.classList.add('scroll-inactive');
 });
 
@@ -177,7 +179,7 @@ if(location.hash != '#home-page'){
     window.addEventListener('scroll', () =>{
         if(active_infiniteScroll && var_counterResult < var_maxResult){
             infiniteScroll();
-        }
+        } 
     }, { passive: false });
 }
 
