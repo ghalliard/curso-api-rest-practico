@@ -7,6 +7,7 @@ let var_categories = 0;
 
 const navigator = () =>{
     var_counterResult = 0;
+
     if(location.hash.startsWith('#more-movies')){
         console.log('more movies');
         h2_more_movies.innerText = 'Trending Movies';
@@ -53,6 +54,7 @@ const navigator = () =>{
         getFavoriteMovies();
         get_trending_movies_preview();
         close_movie_details();
+        search_fnc_close();
     }
     
     window.scrollTo({

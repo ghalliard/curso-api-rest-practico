@@ -9,7 +9,7 @@
     </head>
     <body>
         <header class="main-header scroll-down">
-            <a href="" class="navbar-icon-menu">
+            <a class="navbar-icon-menu">
                 <div class="scroll-box-style">
                     <i class="fa-solid fa-bars"></i>
                 </div>
@@ -123,6 +123,45 @@
             </div>
         </section>
         
+        <section class="menu-section">
+            <div class="menu-options">
+                <div class="back-button-container">
+                    <div class="back-button">
+                        <span><i class="fa-solid fa-arrow-left"></i></span>
+                        <span>Atrás</span>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="menu-list">
+                <li class="menu-list__item">
+                    <div class="menu-list__button">
+                        <img src="" alt="">
+                        <a href="./index.html">Inicio</a>
+                    </div>
+                </li>
+
+                <li class="menu-list__item">
+                    <div class="menu-list__button" id="display-sublist">
+                        <img src="" alt="">
+                        <button>Idioma</button>
+                    </div>
+
+                    <ul class="menu-sublist">
+                        <li class="menu-sublist__item">
+                            <button id="lang_es">Español</button>
+                        </li>
+                        <li class="menu-sublist__item">
+                            <button id="lang_en">Ingles</button>
+                        </li>
+                        <li class="menu-sublist__item">
+                            <button id="lang_pt">Portugues</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        
         <footer class="main-footer">
             <div class="primary-footer">
                 <div class="primary-footer--first-container">
@@ -210,5 +249,7 @@
         <script src="../src/search.js"></script>
         <script src="../src/infinite-scroll.js"></script>
         <script src="../src/likedMovies.js"></script>
+        <script src="../src/languages.js"></script>
+        <script src="../src/menu-section.js"></script>
     </body>
 </html>

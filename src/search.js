@@ -20,10 +20,13 @@ const search_fnc = () =>{
     main.setAttribute('id', 'close');
 }
 
-back_button[1].addEventListener('click', () =>{
-    document.querySelector('.menu-section').classList.remove('menu-section--active');
-    document.body.classList.remove('scroll-inactive');
-});
+if(location.hash == '#home-page'){
+    back_button[1].addEventListener('click', () =>{
+        document.querySelector('.menu-section').classList.remove('menu-section--active');
+        document.body.classList.remove('scroll-inactive');
+    });
+}
+
 back_button[0].addEventListener('click', () =>{
     history.back();
 });

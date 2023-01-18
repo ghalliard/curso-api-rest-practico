@@ -6,5 +6,4 @@ document.querySelector('#display-sublist button').addEventListener('click', () =
         height = list.scrollHeight;
     }
     list.style.height = `${height}px`;
-    
 });

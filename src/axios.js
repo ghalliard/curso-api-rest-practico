@@ -3,16 +3,18 @@ let var_maxResult;
 let var_counterResult;
 
 // DATA
-const api = axios.create({
+let api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
         'Content-Type': 'application/json; charset=utf-8'
     },
     params: {
         'api_key': apiKey,
-        'language': 'es',
+        'language': localStorage.getItem('language'),
     },
 }); 
+
+
 back_history_button.addEventListener('click', () =>{
     history.back();
 });
