@@ -20,12 +20,11 @@ const search_fnc = () =>{
     main.setAttribute('id', 'close');
 }
 
-if(location.hash == '#home-page'){
-    back_button[1].addEventListener('click', () =>{
-        document.querySelector('.menu-section').classList.remove('menu-section--active');
-        document.body.classList.remove('scroll-inactive');
-    });
-}
+document.getElementById('back-button__menu-section').addEventListener('click', () =>{
+    document.querySelector('.menu-section').classList.remove('menu-section--active');
+    document.body.classList.remove('scroll-inactive');
+});
+
 
 back_button[0].addEventListener('click', () =>{
     history.back();
