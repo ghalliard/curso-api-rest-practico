@@ -366,7 +366,7 @@ button{
 }
 
 .menu-section{
-    width: 60vw;
+    width: 255px;
     height: 100vh;
     padding: 20px;
     background-color: var(--main-color);

@@ -120,8 +120,6 @@ const likeMovie = (movie) =>{
     localStorage.setItem('liked_movies', JSON.stringify(likedMovie));
 }
 
-
-
 /*lazy loading*/
 const observer_fnc = (entries) =>{
     entries.forEach(element => {
