@@ -3,28 +3,29 @@ const article = document.querySelector('.movie-list');
 
 const get_trending_movies_preview = async() =>{
     const res = await api('trending/movie/day'); 
+    const movies_data1 = res.data.results.slice(0, 5);
     const movies_data = res.data.results;
     console.log(res);
     article.innerHTML = '';
 
-    for(let i = 0; i < 5; i++){
+    movies_data1.forEach(movie => {
         const movie_poster_container = document.createElement('div');
 
         const movie_img = document.createElement('img');
-        movie_img.setAttribute('alt', `${movies_data[i].title} poster`);
-        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${movies_data[i].poster_path}`);
+        movie_img.setAttribute('alt', `${movie.title} poster`);
+        movie_img.setAttribute('src', `https://image.tmdb.org/t/p/w500${movie.poster_path}`);
 
         const movie_description = document.createElement('div');
         movie_description.classList.add('movie-description');
 
         const movie_title = document.createElement('h1');
-        movie_title.innerText = movies_data[i].title
+        movie_title.innerText = movie.title;
 
         const main_button = document.createElement('button');
         main_button.classList.add('main-button');
         main_button.innerText = 'Ver detalles';
         main_button.addEventListener('click', () =>{
-            location.hash = `movie=${movies_data[i].id}`;
+            location.hash = `movie=${movie.id}`;
         });
 
         movie_description.appendChild(movie_title);
@@ -32,7 +33,7 @@ const get_trending_movies_preview = async() =>{
         movie_poster_container.appendChild(movie_img);
         movie_poster_container.appendChild(movie_description);
         article.appendChild(movie_poster_container);
-    }
+    });
 
     for(let i = 5; i < 10; i++){
         const button = document.createElement('button');
@@ -62,8 +63,6 @@ const get_trending_movies_preview = async() =>{
         });
     }
 }
-
-
 
 /*
 FORMA TRADICIONAL:

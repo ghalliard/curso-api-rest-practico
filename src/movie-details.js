@@ -32,7 +32,7 @@ const get_movie_by_id = async(id) =>{
 
     const duration = movie_duration(movie.runtime);
     const subtitle = document.querySelector('.movie-details-subtitle');
-    subtitle.innerHTML = `${movie.genres[0].name} | ${duration[0]}h ${duration[1]}m | <i class="fa-solid fa-star" style='color: #FFC300'></i> ${movie.vote_average}`;
+    subtitle.innerHTML = `${movie.genres[0].name} | ${duration[0]}h ${duration[1]}m | <i class="fa-solid fa-star" style='color: #FFC300'></i> ${parseInt(movie.vote_average)}`;
 
     const synopsis = document.querySelector('.movie-details-synopsis');
     synopsis.innerText = `${movie.overview}`;

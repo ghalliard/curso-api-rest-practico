@@ -35,9 +35,29 @@
 
         <main>
             <section class="best-premier-movies">
-                <article class="movie-list">
+                <article class="movie-list carousel-container">
                     <div class="movie-list--loading"></div>
                 </article>
+
+                <button class="carousel-control-prev carousel-arrow" type="button">
+                    <span class="carousel-control-prev-icon" aria-hidden="true">
+                        <i class="fa-sharp fa-solid fa-circle-arrow-left"></i>
+                    </span>
+                </button>
+
+                <button class="carousel-control-next carousel-arrow" type="button">
+                    <span class="carousel-control-next-icon" aria-hidden="true">
+                        <i class="fa-solid fa-circle-arrow-right"></i>
+                    </span>
+                </button>
+
+                <div class="carousel-indicators">
+                    <button class="carousel-indicator-item" type="button"></button>
+                    <button class="carousel-indicator-item" type="button"></button>
+                    <button class="carousel-indicator-item" type="button"></button>
+                    <button class="carousel-indicator-item" type="button"></button>
+                    <button class="carousel-indicator-item" type="button"></button>
+                </div>
             </section>
 
             <section class="movies-section">
@@ -255,5 +275,6 @@
         <script src="./src/likedMovies.js"></script>
         <script src="./src/languages.js"></script>
         <script src="./src/menu-section.js"></script>
+        <script src="./src/carousel-movies.js"></script>
     </body>
 </html>
